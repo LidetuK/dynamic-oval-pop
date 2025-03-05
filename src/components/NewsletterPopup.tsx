@@ -5,20 +5,11 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from '@/lib/utils';
 
 const NewsletterPopup = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Changed to true to show immediately
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const { toast } = useToast();
-
-  useEffect(() => {
-    // Show popup after 2 seconds
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleClose = () => {
     setIsAnimating(true);
@@ -49,7 +40,7 @@ const NewsletterPopup = () => {
   };
 
   const backdropClasses = cn(
-    'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-300',
+    'fixed inset-0 z-50 bg-transparent transition-opacity duration-300',
     isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none',
     isAnimating ? 'animate-fade-in reverse' : 'animate-fade-in'
   );
