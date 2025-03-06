@@ -48,17 +48,20 @@ const NewsletterPopup = () => {
     });
   };
 
+  // Updated backdrop classes
   const backdropClasses = cn(
     'fixed inset-0 z-50 bg-transparent transition-opacity duration-300',
     isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none',
     isAnimating ? 'animate-fade-out' : 'animate-fade-in'
   );
 
+  // Updated popup classes with more explicit centering
   const popupClasses = cn(
-    'fixed z-50 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2',
+    'fixed z-50',
     'w-[90%] max-w-3xl aspect-[1.8/1] rounded-full overflow-hidden',
     'flex flex-col md:flex-row shadow-2xl',
     'transition-all duration-700',
+    'inset-0 m-auto', // This ensures the popup is absolutely centered
     isVisible ? 'scale-100 rotate-0 opacity-100' : 'scale-75 rotate-6 opacity-0 pointer-events-none',
     isAnimating ? 'animate-scale-out' : 'animate-scale-in'
   );
@@ -66,7 +69,7 @@ const NewsletterPopup = () => {
   return (
     <>
       <div className={backdropClasses} onClick={handleClose} />
-      <div className={popupClasses}>
+      <div className={popupClasses} style={{ height: 'fit-content' }}>
         {/* Yellow Section */}
         <div className="relative w-full md:w-1/2 h-full bg-brand-yellow flex items-center justify-center overflow-hidden">
           <div className="absolute w-[150%] h-[150%] bg-brand-yellow rounded-full -top-[25%] -left-[25%] animate-float" />
