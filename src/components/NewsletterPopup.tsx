@@ -55,11 +55,10 @@ const NewsletterPopup = () => {
   );
 
   const popupClasses = cn(
-    'fixed z-50',
+    'fixed z-50 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2',
     'w-[90%] max-w-3xl aspect-[1.8/1] rounded-full overflow-hidden',
     'flex flex-col md:flex-row shadow-2xl',
     'transition-all duration-700',
-    'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', // Fixed position centered
     isVisible ? 'scale-100 rotate-0 opacity-100' : 'scale-75 rotate-6 opacity-0 pointer-events-none',
     isAnimating ? 'animate-scale-out' : 'animate-scale-in'
   );
