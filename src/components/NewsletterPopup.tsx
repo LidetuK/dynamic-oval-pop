@@ -55,24 +55,25 @@ const NewsletterPopup = () => {
     isAnimating ? 'animate-fade-out' : 'animate-fade-in'
   );
 
-  // Updated popup classes for full screen
+  // Updated popup classes for full screen with circular design
   const popupClasses = cn(
     'fixed inset-0 z-50',
     'w-full h-full',
     'flex flex-col md:flex-row',
     'transition-all duration-700',
     isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none',
-    isAnimating ? 'animate-scale-out' : 'animate-scale-in'
+    isAnimating ? 'animate-scale-out' : 'animate-scale-in',
+    'overflow-hidden' // Added to ensure content stays within the rounded container
   );
 
   return (
     <>
       <div className={backdropClasses} onClick={handleClose} />
       <div className={popupClasses}>
-        {/* Yellow Section - now takes up full height and either full width (mobile) or half width (desktop) */}
-        <div className="relative w-full md:w-1/2 h-1/2 md:h-full bg-brand-yellow flex items-center justify-center overflow-hidden">
-          <div className="absolute w-[150%] h-[150%] bg-brand-yellow rounded-full -top-[25%] -left-[25%] animate-float" />
-          <div className="absolute w-[130%] h-[130%] bg-brand-lightYellow rounded-full opacity-60 -bottom-[30%] -right-[15%] animate-float animation-delay-1000" />
+        {/* Yellow Section - with enhanced circular design */}
+        <div className="relative w-full md:w-1/2 h-1/2 md:h-full bg-brand-yellow flex items-center justify-center overflow-hidden rounded-full md:rounded-r-none">
+          <div className="absolute w-[200%] h-[200%] bg-brand-yellow rounded-full -top-[50%] -left-[50%] animate-float" />
+          <div className="absolute w-[180%] h-[180%] bg-brand-lightYellow rounded-full opacity-60 -bottom-[40%] -right-[40%] animate-float animation-delay-1000" />
           
           <div className="relative z-10 p-6 md:p-12 flex flex-col items-center justify-center text-brand-black h-full">
             <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 tracking-tight animate-slide-up opacity-0 [animation-delay:200ms]">
@@ -84,8 +85,8 @@ const NewsletterPopup = () => {
           </div>
         </div>
 
-        {/* Black Section - now takes up full height and either full width (mobile) or half width (desktop) */}
-        <div className="relative w-full md:w-1/2 h-1/2 md:h-full bg-brand-black flex items-center justify-center p-6 md:p-12">
+        {/* Black Section - with enhanced circular design */}
+        <div className="relative w-full md:w-1/2 h-1/2 md:h-full bg-brand-black flex items-center justify-center p-6 md:p-12 rounded-full md:rounded-l-none">
           <button 
             onClick={handleClose}
             className="absolute top-6 right-6 z-20 text-white/70 hover:text-white transition-colors duration-200"
